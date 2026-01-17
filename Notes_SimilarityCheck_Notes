@@ -1,0 +1,37 @@
+Using NLP library spacey in python.
+
+You can confirm the image is successfully pulled using the following command  
+docker images
+
+
+Open terminal --> Navigate to the project directory and run the following command to run the docker-compose file
+docker compose build
+docker compose up
+
+Now open a new terminal and verify if this mongo container is up and running
+
+docker ps
+
+Login to MongoDB with created credentials::
+
+docker exec -it <container-name> bash
+
+mongosh -u admin --authenticationDatabase firstdb
+
+
+CHART PROTOCOL(Resource Method Chart)
+Resource                            Address         Protocol            Parameters                   Response + Statuscode
+Register User                       /register       POST                username,pwd - String           200 OK
+                                                                                                        301 Invalid username (user already exists!!!)
+
+Detect Similarity of Docs           /detect          POST              username,pwd -String
+                                                                            Text1, Text2                200 OK -return similarity of docs
+                                                                                                        301 Invalid username 
+                                                                                                        302 Invalid pwd
+                                                                                                        303 Insufficient tokens
+                                                                            
+Refill Tokens Sent                  /refill            POST             username,admin_pwd -String      200 OK
+                                                                        refill amount                   301 Invalid username
+                                                                                                        304 Invalid admin pwd                                                               
+                    
+                

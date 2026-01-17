@@ -1,0 +1,10 @@
+services:
+# Define the web service
+  web:
+    build: ./web
+    ports:
+      - "5000:5000" # Expose port 5000 for the web service
+    links:
+      - db # Link to the database service
+  db:
+    build: ./db    
